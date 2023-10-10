@@ -7,7 +7,7 @@ const oddOrEven = (n) => (n % 2 === 0 ? 'even' : 'odd')
 const returnArray = (str) => str.split(' ')
 
 // https://www.codewars.com/kata/55b42574ff091733d900002f
-const friends = (arr) => arr.filter((el) => el.length <= 4)
+const friends = (arr) => arr.filter((el) => el.length === 4)
 
 // Задача на filter
 // 1. Отфильтровать массив только с уникальными значениями используя filter и indexOf()
