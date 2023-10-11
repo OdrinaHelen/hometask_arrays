@@ -1,6 +1,6 @@
 const containter = document.createElement('h1')
 
-let counterfromTheStorage = Number(localStorage.getItem('counter')) || 0
+let counterfromTheStorage = JSON.parse(localStorage.getItem('counter')) || 0
 
 containter.innerText = counterfromTheStorage
 const increaseButton = document.createElement('button')
@@ -16,7 +16,7 @@ increaseButton.addEventListener('click', () => {
 decreaseButton.addEventListener('click', () => {
   counterfromTheStorage -= 1
   containter.innerText = counterfromTheStorage
-  localStorage.setItem('counter', counterfromTheStorage)
+  localStorage.setItem('counter', JSON.stringify(counterfromTheStorage))
 })
 const counterContainer = document.createElement('div')
 root.appendChild(counterContainer)
