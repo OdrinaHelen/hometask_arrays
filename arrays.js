@@ -12,7 +12,10 @@ const friends = (arr) => arr.filter((el) => el.length === 4)
 // Задача на filter
 // 1. Отфильтровать массив только с уникальными значениями используя filter и indexOf()
 const arrOfSameValues = [1, 2, 3, 1, 4, 6, 7, 4, 5, 8, 7, 9]
-const uniqueValues = (arr) => arr.filter((el, i, arr) => arr.indexOf(el) === i)
+const uniqueValues = (arr) => arr.filter((el, i) => arr.indexOf(el) === i)
+console.log(uniqueValues(arrOfSameValues))
+const a = arrOfSameValues.indexOf(2)
+console.log(a)
 
 // 2. Отфильтровать продукты дешевле 15
 const products = [
@@ -32,7 +35,18 @@ const books = [
   { title: 'Book 3', author: 'Author A' },
   { title: 'Book 4', author: 'Author C' },
 ]
-const res2 = books.find((el) => el.author === 'Author B')
+
+const res2 = books.find((el) => (el.author = 'Author B'))
+console.log(res2)
+const books = [
+  { title: 'Book 1', author: 'Author A' },
+  { title: 'Book 2', author: 'Author B' },
+  { title: 'Book 3', author: 'Author A' },
+  { title: 'Book 4', author: 'Author C' },
+]
+
+const newAuthor = books.find((book) => book.author.startsWith('Author B'))
+console.log(newAuthor)
 
 // задачи sort
 // 4. отсортировать по id
@@ -68,8 +82,11 @@ const people = [
   { name: 'Grace', age: 29 },
   { name: 'Isaac', age: 23 },
 ]
-const res4 = people.sort((a, b) => a.name - b.name)
-// 6. Отсортиировать по возрасту
+
+const res4 = people.sort((a, b) => a.name.localeCompare(b.name))
+console.log(res4)
+
+// 6. Отсортировать по возрасту
 const people = [
   { name: 'Alice', age: 25 },
   { name: 'Bob', age: 20 },
@@ -87,12 +104,18 @@ const res5 = people.sort((a, b) => a.age - b.age)
 // задачи reduce
 // 7. найти сумму четных!! чисел массива.
 const numbers22 = [7, 42, 33, 16, 50, 3, 28, 21, 15, 39]
+
 const res6 = numbers22.filter((el) => el % 2 === 0).reduce((acc, value) => acc + value, 0)
+
+const sumOfEven = numbers22.reduce((acc, val) => {
+  return val % 2 === 0 ? acc + val : acc
+}, 0)
 
 // 8.  Используя метод reduce найти наибольшее число массива.
 const numbers23 = [7, 42, 33, 16, 50, 3, 28, 21, 15, 39]
 const res7 = numbers23.reduce((acc, value) => (acc < value ? (acc = value) : acc))
 console.log(res7)
+
 // 9.reduce найти объект товара с самой высокой ценой.
 const arr2 = [
   { id: 1, title: 'велосипед', price: 45000, marks: [4, 5, 3, 5] },
@@ -102,6 +125,7 @@ const arr2 = [
 ]
 const res8 = arr2.reduce((acc, product) => (acc.price > product.price ? acc : product), 0)
 console.log(res8)
+
 // 10. Найти среднюю оценку marks у товара
 const arr2 = [
   { id: 1, title: 'велосипед', price: 45000, marks: [4, 5, 3, 5] },
@@ -119,3 +143,27 @@ const res9 = arr2.map((el) => {
 })
 
 console.log(res9)
+
+const a1 = { id: 1, title: 'велосипед', price: 45000, marks: [4, 5, 3, 5] }
+
+let object111 = a1
+const a3 = { ...a1 }
+console.log(a1 === object111)
+console.log(a1 === a3)
+
+const obj1 = { a: 1 }
+const obj3 = { b: 2 }
+
+const newObj = { ...obj1, ...obj3 }
+console.log(newObj)
+
+// = присваивание
+const val = 1
+const newVal = val
+
+// ==
+// ===
+console.log(1 == '1') // сравнение с приведением типов
+console.log(1 === Number('1')) //  строгое сравнение
+console.log(0 == []) // false == false
+console.log(0 === []) // ноль не равен пустому массиву
